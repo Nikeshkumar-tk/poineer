@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Put, Req, UseGuards } from '@nestjs/common'
+import { Controller, Get, Post, Put, Req, UseGuards, BadRequestException } from '@nestjs/common'
 import { UserData, UserService } from './user.service'
 import { AuthGuard } from '../auth/auth.guard'
 
@@ -14,13 +14,17 @@ export class UserController {
 
   @UseGuards(AuthGuard)
   @Post()
-  createUser(@Req() request: any): UserData {
-    return this.userService.getData(request.body.data)
+  createUser(@Req() request: Request): UserData {
+    if (!(request.body as any).data) throw new BadRequestException('Name is required')
+
+    return this.userService.getData((request.body as any).data)
   }
 
   @UseGuards(AuthGuard)
   @Put()
-  updateUser(@Req() request: any): UserData {
-    return this.userService.getData(request.body.data, true)
+  updateUser(@Req() request: Request): UserData {
+    if (!(request.body as any).data) throw new BadRequestException('Name is required')
+
+    return this.userService.getData((request.body as any).data, true)
   }
 }
