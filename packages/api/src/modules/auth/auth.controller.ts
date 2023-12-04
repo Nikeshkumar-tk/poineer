@@ -1,4 +1,5 @@
 import { Controller, Post, Req } from '@nestjs/common'
+import type { Request } from 'express'
 
 import { Public } from './auth.guard'
 import { AuthService } from './auth.service'

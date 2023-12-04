@@ -1,3 +1,5 @@
+import type { Config } from 'jest'
+
 /* eslint-disable */
 export default {
   displayName: 'api',
@@ -8,4 +10,6 @@ export default {
   },
   moduleFileExtensions: ['ts', 'js', 'html'],
   coverageDirectory: '../../coverage/packages/api',
-}
+  setupFilesAfterEnv: ['<rootDir>/jest.init.ts'],
+  globalSetup: '<rootDir>/jest.setup.ts',
+} as Config
