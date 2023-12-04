@@ -2,7 +2,7 @@
 
 ## General 💬
 
-Greetings brave soul! We are excited you are here 🙂 This test will be one which tests your general knowledge around key technologies we use at Asset Panda as well as your ability to adapt to the current codebase. It is recommended that you time box this exercise to 4 hours, if it takes you longer than that you will probably hate working on this project.
+Greetings brave soul! We are excited you are here 🙂 This test will be one which tests your general knowledge around key technologies we use at Asset Panda as well as your ability to adapt to the current codebase. It is recommended that you time box this exercise to 4 - 6 hours, if it takes you longer than that you will probably hate working on this project.
 
 ## Tech 💻
 
@@ -25,9 +25,9 @@ You will need NX's [run command](https://nx.dev/nx-api/nx/documents/run) to exec
 
 #### Complete as many of the following as you can in order
 
-1. There some bugs, find and fix them. All tests should pass
-2. This code is kinda 💩, refactor it using best practices
-3. Create a new end point which serves data with jest testing
+1. There some bugs, find and fix them. All tests should pass (⚠️ !!DO NOT EDIT THE TESTS!! ⚠️)
+2. Create a new end point which serves data with jest testing
+3. This code is kinda 💩, refactor it using best practices
 4. Leave inline todos and questions which you think should be done to further improve the setup
 
 #### Bonus Points
@@ -38,4 +38,4 @@ You will need NX's [run command](https://nx.dev/nx-api/nx/documents/run) to exec
 ### Delivery
 
 1. Remove the node_modules and andy git directories
-2. Email zipped contents to `adam.flaxman@assetpanda.com`
+2. Zip up and return this project
