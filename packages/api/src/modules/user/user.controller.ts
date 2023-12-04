@@ -17,8 +17,6 @@ export class UserController {
 
   @Put()
   updateUser(@Req() request: any): UserData {
-    if (!request.body.data) throw new Error('No data provided')
-
-    return this.userService.getData(request.body.data)
+    return this.userService.getData(request.body.data, true)
   }
 }
