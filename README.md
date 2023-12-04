@@ -28,11 +28,12 @@ You will need NX's [run command](https://nx.dev/nx-api/nx/documents/run) to exec
 1. There some bugs, find and fix them. All tests should pass
 2. This code is kinda 💩, refactor it using best practices
 3. Create a new end point which serves data with jest testing
+4. Leave inline todos and questions which you think should be done to further improve the setup
 
 #### Bonus Points
 
-5. Modify the api the be AWS Lambda friendly
-6. Deploy it to a live API Gateway and include that working endpoint's address on this document
+1. Modify the api the be AWS Lambda friendly
+2. Deploy it to a live API Gateway and include that working endpoint's address on this document
 
 ### Delivery
 

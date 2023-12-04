@@ -1,10 +1,5 @@
 import { Injectable } from '@nestjs/common'
-
-const dataMapper = (data: string | undefined, { noDErr = false }: { noDErr?: boolean } = {}) => {
-  if (!data && noDErr) throw new Error('No data provided')
-
-  return { data: data ?? Date.now().toString() }
-}
+import { dataMapper } from '@/lib'
 
 @Injectable()
 export class UserService {

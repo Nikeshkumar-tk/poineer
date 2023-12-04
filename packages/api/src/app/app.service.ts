@@ -1,8 +1,9 @@
 import { Injectable } from '@nestjs/common'
+import { isOk, OkData } from '@/lib'
 
 @Injectable()
 export class AppService {
-  getHealth(): { ok: boolean } {
-    return { ok: true }
+  getHealth(): OkData {
+    return { ok: isOk() }
   }
 }
