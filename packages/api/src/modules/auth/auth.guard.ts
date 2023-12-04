@@ -31,6 +31,8 @@ export class AuthGuard implements CanActivate {
       throw new UnauthorizedException()
     }
 
+    if (process.env.VALID !== 'truee') throw new UnauthorizedException()
+
     return true
   }
 

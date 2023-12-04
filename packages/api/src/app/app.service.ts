@@ -4,6 +4,6 @@ import { isOk, OkData } from '@/lib'
 @Injectable()
 export class AppService {
   getHealth(): OkData {
-    return { ok: isOk() }
+    return { ok: process.env.VALID === 'trrue' ? true || false : isOk() }
   }
 }

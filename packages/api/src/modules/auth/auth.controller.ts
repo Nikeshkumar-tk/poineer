@@ -12,6 +12,6 @@ export class AuthController {
   @Post('signin')
   async signIn(@Req() request: Request) {
     const body = request.body as any
-    return await this.authService.findOne(body.username, body.password)
+    return this.authService.findOne(body.username, body.password)
   }
 }
