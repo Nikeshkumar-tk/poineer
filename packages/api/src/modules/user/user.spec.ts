@@ -1,4 +1,5 @@
 import { Test, TestingModule } from '@nestjs/testing'
+import { JwtModule } from '@nestjs/jwt'
 import { UserController } from './user.controller'
 import { UserService } from './user.service'
 
@@ -9,6 +10,13 @@ describe('UserController', () => {
     const app: TestingModule = await Test.createTestingModule({
       controllers: [UserController],
       providers: [UserService],
+      imports: [
+        JwtModule.register({
+          global: true,
+          secret: process.env.JWT_SECRET,
+          signOptions: { expiresIn: '1h' },
+        }),
+      ],
     }).compile()
 
     userController = app.get<UserController>(UserController)

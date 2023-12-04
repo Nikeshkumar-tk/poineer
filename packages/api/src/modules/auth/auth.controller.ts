@@ -1,13 +1,16 @@
-import { Body, Controller, Post } from '@nestjs/common'
+import { Controller, Post, Req } from '@nestjs/common'
 
+import { Public } from './auth.guard'
 import { AuthService } from './auth.service'
 
 @Controller('auth')
 export class AuthController {
   constructor(private readonly authService: AuthService) {}
 
+  @Public()
   @Post('signin')
-  async signIn(@Body('username') body: { username: string; pass: string }) {
-    return await this.authService.findOne(body.username, body.pass)
+  async signIn(@Req() request: Request) {
+    const body = request.body as any
+    return await this.authService.findOne(body.username, body.password)
   }
 }

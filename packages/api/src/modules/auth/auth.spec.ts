@@ -1,35 +1,39 @@
-import { Test, TestingModule } from '@nestjs/testing'
-import { JwtModule } from '@nestjs/jwt'
-import { AuthController } from './auth.controller'
-import { AuthService } from './auth.service'
+import { INestApplication } from '@nestjs/common'
+import { Test } from '@nestjs/testing'
+import request from 'supertest'
+import { AppModule } from '../../app/app.module'
 
 describe('AuthController', () => {
-  let authController: AuthController
+  let app: INestApplication
 
-  beforeEach(async () => {
-    const module: TestingModule = await Test.createTestingModule({
-      imports: [
-        JwtModule.register({
-          global: true,
-          secret: process.env.JWT_SECRET,
-          signOptions: { expiresIn: '1h' },
-        }),
-      ],
-      controllers: [AuthController],
-      providers: [AuthService],
-    }).compile()
+  beforeAll(async () => {
+    const moduleRef = await Test.createTestingModule({ imports: [AppModule] }).compile()
 
-    authController = module.get<AuthController>(AuthController)
+    app = moduleRef.createNestApplication()
+    await app.init()
   })
 
-  it('should be defined', () => expect(authController).toBeDefined())
+  describe('POST signin', () => {
+    const urlPath = '/auth/signin'
 
-  describe('signIn', () => {
-    it('should return access_token', async () => {
-      const response = await authController.signIn({ username: 'john', pass: 'changeme' })
+    it('should allow signin with proper credentials', async () => {
+      const response = await request(app.getHttpServer())
+        .post(urlPath)
+        .send({ username: 'john', password: 'changeme' })
+        .expect(201)
 
-      expect(response).toBeDefined()
-      expect(response.access_token).toBeDefined()
+      expect(response.body).toBeDefined()
+      expect(response.body.access_token).toBeDefined()
+    })
+
+    it('should throw an error', async () => {
+      const response = await request(app.getHttpServer())
+        .post(urlPath)
+        .send({ username: 'test', password: 'test' })
+        .expect(401)
+
+      expect(response.body).toBeDefined()
+      expect(response.body.message).toBe('Unauthorized')
     })
   })
 })
