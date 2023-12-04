@@ -14,6 +14,8 @@ describe('UserController', () => {
     userController = app.get<UserController>(UserController)
   })
 
+  it('should be defined', () => expect(userController).toBeDefined())
+
   describe('get user', () => {
     it('should not be isNaN', () => {
       const response = userController.getUser()

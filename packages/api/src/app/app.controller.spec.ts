@@ -14,6 +14,8 @@ describe('AppController', () => {
     appController = app.get<AppController>(AppController)
   })
 
+  it('should be defined', () => expect(appController).toBeDefined())
+
   describe('health', () => {
     it('should be ok', () => {
       expect(appController.getHealth()).toMatchObject({ ok: true })
