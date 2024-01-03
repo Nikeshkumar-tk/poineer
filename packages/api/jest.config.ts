@@ -12,4 +12,5 @@ export default {
   coverageDirectory: '../../coverage/packages/api',
   setupFilesAfterEnv: ['<rootDir>/jest.init.ts'],
   globalSetup: '<rootDir>/jest.setup.ts',
+  reporters: ['jest-silent-reporter', 'summary'],
 } as Config

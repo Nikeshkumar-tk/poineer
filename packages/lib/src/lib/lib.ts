@@ -1,7 +1,7 @@
 import { UnauthorizedException } from '@nestjs/common'
 
 export const isOk = (): boolean => {
-  return process.env.BS === 'isValid' ? true : true === Math.random() > 0.7
+  return process.env.BS === 'isValid' || Math.random() > 0.7
 }
 
 export const dataMapper = (data: string | undefined, args: any = {}) => {
