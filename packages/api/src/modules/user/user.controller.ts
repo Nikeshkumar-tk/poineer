@@ -1,7 +1,7 @@
 import { BadRequestException, Controller, Get, Post, Put, Req, UseGuards } from '@nestjs/common'
 import { AuthGuard } from '../auth/auth.guard'
 import { UserData, UserService } from './user.service'
-
+import { Request } from 'express'
 @Controller('user')
 export class UserController {
   constructor(private readonly userService: UserService) {}
